@@ -1,5 +1,4 @@
 const { readFileSync } = require('fs');
-const { start } = require('repl');
 
 const readFileLines = filename =>
   readFileSync(filename).toString('UTF8').split('\n');
