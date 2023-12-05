@@ -14,6 +14,10 @@ class Game {
         this.green = green;
         this.blue = blue;
     }
+
+    getPower() {
+        return this.red * this.green * this.blue;
+    }
 }
 
 function parseGame(line) {
@@ -53,6 +57,15 @@ for(let i = 0; i < lines.length; i++) {
     }
 }
 
-console.log(sum);
+console.log(`sum=${sum}`);
+
+let powerSum = 0;
+for(let i = 0; i < lines.length; i++) {
+    let game = parseGame(lines[i]);
+    powerSum += game.getPower();
+}
+
+console.log(`sum of power=${powerSum}`);
+
 // console.log(lines[0]);
 // console.log(lines[lines.length - 1]);
