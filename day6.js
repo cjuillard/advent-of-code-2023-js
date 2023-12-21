@@ -54,8 +54,31 @@ function part1() {
     console.log(`winning combos = ${winningCombos}`);
 }
 
-function part2() {
+function combineNumbers(line) {
+    const numberStr = line.replaceAll(" ", "");
+    return parseInt(numberStr);
+}
 
+function part2() {
+    const times = [combineNumbers(lines[0].split(":")[1])]
+    const distances = [combineNumbers(lines[1].split(":")[1])];
+
+    const races = [];
+    times.forEach((element, index) => {
+        races.push(new Race(times[index], distances[index]));
+    });
+
+    let winningCombos = 0;
+    races.forEach(value => {
+        const currCombos = value.getWinningOptionsCount();
+        if(winningCombos == 0) {
+            winningCombos = currCombos;
+        } else {
+            winningCombos *= currCombos;
+        }
+    });
+
+    console.log(`winning combos = ${winningCombos}`);
 }
 
 let lines = readFileLines("input/input_day6.txt");
